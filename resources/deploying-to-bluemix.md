@@ -44,7 +44,7 @@ applications:
   buildpack: https://github.com/heroku/heroku-buildpack-clojure.git
 ```
 
-This tells Bluemix to use a custom buildpack for Clojure and the `cflinuxfs2` stack, which gives us Ubuntu 14.04 instead of the default 10.04. Can you believe Bluemix still uses 10.04 as a default? [That's not even supported anymore!](https://wiki.ubuntu.com/Releases)
+This tells Bluemix to use a custom buildpack for Clojure and the `cflinuxfs2` stack, which gives us Ubuntu 14.04 instead of the default 10.04. Can you believe Bluemix is still using 10.04 by default? [That's not even supported anymore!](https://wiki.ubuntu.com/Releases)
 
 ### Add a `Procfile`
 
