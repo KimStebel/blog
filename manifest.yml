@@ -1,0 +1,10 @@
+---
+applications:
+- name: taas
+  memory: 512M
+  host: taas
+  stack: cflinuxfs2
+  instances: 1
+  path: .
+  buildpack: https://github.com/heroku/heroku-buildpack-clojure.git
+

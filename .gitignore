@@ -1,0 +1,8 @@
+target/
+tmp/
+logs/
+.classpath
+.lein-repl-history
+.nrepl-port
+.project
+bin/
