@@ -49,5 +49,5 @@
               ;;::bootstrap/host "localhost"
               ::bootstrap/port (Integer. 
                                  (let [port (System/getenv "VCAP_APP_PORT")]
-                                   (or port "8000") ))});
+                                   (or port "8080") ))});
 
