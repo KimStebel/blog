@@ -1,6 +1,10 @@
-# Deploying a pedestal application to Bluemix
+# Deploying a Pedestal application to Bluemix
+
+Recently I've been dabbling in Clojure a bit and decided to use it to write my own blog (the one you're reading now!). I deployed it to Bluemix, and since neither Bluemix nor Pedestal have any useful documentation on how to deploy a Clojure/Pedestal app to Bluemix, I thought I'd write it up. Let's start!
 
 ## Create the pedestal app
+
+If you haven't already, create a Pedestal application with Leiningen:
 
 ```
 lein new pedestal-service the-next-big-server-side-thing
@@ -26,7 +30,7 @@ with
 
 ### Add a manifest
 
-Add a `manifest.yml` file to your project directory. It should look like this:
+Add a `manifest.yml` file to your project directory:
 
 ```
 ---
@@ -40,7 +44,7 @@ applications:
   buildpack: https://github.com/heroku/heroku-buildpack-clojure.git
 ```
 
-This is all fairly standard, except that we have to tell Bluemix to use a custom buildpack and the `cflinuxfs2` stack, which gives us Ubuntu 14.04 as the base instead of the default 10.04. You can list the available stacks with `cf stacks`.
+This tells Bluemix to use a custom buildpack for Clojure and the `cflinuxfs2` stack, which gives us Ubuntu 14.04 instead of the default 10.04. Can you believe Bluemix still uses 10.04 as a default? [That's not even supported anymore!](https://wiki.ubuntu.com/Releases)
 
 ### Add a `Procfile`
 
