@@ -3,7 +3,9 @@
             [io.pedestal.http.route :as route]
             [io.pedestal.http.body-params :as body-params]
             [io.pedestal.http.route.definition :refer [defroutes]]
-            [ring.util.response :as ring-resp]))
+            [ring.util.response :as ring-resp]
+            [markdown.core :as md]
+            [clojure.java.io :as io]))
 
 (defn about-page
   [request]
@@ -13,7 +15,7 @@
 
 (defn home-page
   [request]
-  (ring-resp/response "Hello World!"))
+  (ring-resp/response (markdown.core/md-to-html-string (slurp (io/file (io/resource "deploying-to-bluemix.md"))))))
 
 (defroutes routes
   ;; Defines "/" and "/about" routes with their associated :get handlers.

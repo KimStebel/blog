@@ -10,25 +10,25 @@ If you haven't already, create a Pedestal application with Leiningen:
 lein new pedestal-service the-next-big-server-side-thing
 ```
 
-## Make it use `VCAP_APP_PORT` as the server port
+## Listen on the right port
 
 Bluemix apps have to bind to the port provided in the `VCAP_APP_PORT` environment variable. Otherwise, Bluemix won't know how to talk to the app and will report that the app failed to start.
 
 Edit `service.clj` and replace 
 
-```
+```clojure
 ::bootstrap/port 8080})
 ```
 
 with
 
-```
+```clojure
 ::bootstrap/port (Integer. 
                    (let [port (System/getenv "VCAP_APP_PORT")]
                      (or port "8080") ))})
 ```
 
-### Add a manifest
+## Add a manifest
 
 Add a `manifest.yml` file to your project directory:
 
@@ -46,15 +46,7 @@ applications:
 
 This tells Bluemix to use a custom buildpack for Clojure and the `cflinuxfs2` stack, which gives us Ubuntu 14.04 instead of the default 10.04. Can you believe Bluemix is still using 10.04 by default? [That's not even supported anymore!](https://wiki.ubuntu.com/Releases)
 
-### Add a `Procfile`
-
-The `Procfile` tells Bluemix what to run. In our case, it's very simple:
-
-```
-web: lein run
-```
-
-### Login to Bluemix and push the app
+## Login to Bluemix and push the app
 
 Login and push...
 
