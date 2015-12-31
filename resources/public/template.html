@@ -1,21 +1,39 @@
+<!DOCTYPE html>
 <html>
 <head>
   <title>Kim's Blog</title>
-  <link rel="stylesheet" type="text/css" href="main.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <!-- Optional theme: --> <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <link rel="stylesheet" type="text/css" href="/main.css">
 </head>
 <body>
-  <header>
-    <h1>Kim's Blog</h1>
-  </header>
-  <div class="content">
-    <h1>Post title</h1>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id sapien risus. Quisque in pretium purus. Morbi sodales lacinia orci eu gravida. Pellentesque auctor ullamcorper leo id bibendum. Maecenas sed cursus dui, id sodales nisl. Nam ultrices sit amet lorem eget pellentesque. Maecenas id ultrices ex. Nulla dictum sagittis lorem, vel tristique justo vehicula vitae.
-      Aenean ornare eros libero, sed congue sapien ornare eget. Nullam neque nisl, dapibus ut tincidunt id, consectetur sed erat. Nulla id justo consequat, eleifend augue vitae, mollis tellus. Suspendisse potenti. Sed mattis bibendum urna, ut varius tortor pharetra sit amet. Cras bibendum vestibulum orci vel tempor. Praesent et tortor felis. Cras non suscipit turpis, et suscipit est. Curabitur ut tortor sed odio cursus porttitor vel non ligula. Nullam dignissim fermentum consectetur. Vivamus sed aliquet nisi. Nulla eu dictum leo, in euismod est.
-      Mauris euismod odio neque, eu pellentesque ligula ullamcorper vel. Fusce et sem urna. Aliquam sit amet ligula consectetur ante ornare venenatis semper nec urna. Sed fermentum, est vel congue congue, nunc mauris finibus augue, quis tristique massa orci at libero. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean et massa dui. Vivamus et sapien lectus. Sed sagittis finibus neque, et rutrum mi egestas quis. Aliquam sit amet arcu quam. Nam sit amet est condimentum, blandit sapien at, aliquet tortor. Phasellus dictum turpis quis mi mollis scelerisque. Phasellus accumsan mi risus, eu fermentum nunc iaculis eget. Maecenas maximus neque eu tempor sodales.
-      Mauris tincidunt pharetra nunc, in porttitor arcu commodo ac. Nunc iaculis pulvinar aliquet. Aenean rutrum eu sem ac pellentesque. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus metus eros, pulvinar ut luctus a, luctus eget enim. Praesent ullamcorper elit facilisis leo vehicula eleifend. Nullam sed lacinia lacus. Praesent mollis ullamcorper tortor, non pulvinar nulla lobortis nec. Cras sit amet risus eu dolor accumsan placerat blandit eget quam. Donec quis fringilla risus, sit amet commodo leo. Phasellus placerat metus eu vulputate faucibus. Aliquam blandit laoreet eros efficitur fringilla.
-      Fusce nec velit non felis consequat malesuada dignissim non diam. Nulla consectetur vulputate dui quis mollis. Aliquam vulputate tortor quis libero gravida, id elementum lectus fringilla. Sed vel tempus metus. Curabitur placerat nisl ut rhoncus lacinia. Quisque consequat justo diam, et fermentum tortor pretium vitae. Integer tellus elit, mollis sed turpis ut, sodales pellentesque quam.
-    </p>
+  <div class="container">
+    <header class="row">
+      <div class="col-xs-12 col-md-4"><h1>Kim Stebel</h1></div>
+      <div class="tagline col-xs-12 col-md-8">Functional programming, SaaS, and other things</div>
+    </header>
+    <div class="main row">
+      <div class="content col-xs-12 col-md-8">
+        <h1>Post Title</h1>
+        <p>
+          <a href="#">Lorem ipsum</a> dolor sit amet, consectetur adipiscing elit. Ut id sapien risus. Quisque in pretium purus. Morbi sodales lacinia orci eu gravida. Pellentesque auctor ullamcorper leo id bibendum. Maecenas sed cursus dui, id sodales nisl. Nam ultrices sit amet lorem eget pellentesque. Maecenas id ultrices ex. Nulla dictum sagittis lorem, vel tristique justo vehicula vitae.
+          Aenean ornare eros libero, sed congue sapien ornare eget. Nullam neque nisl, dapibus ut tincidunt id, consectetur sed erat. Nulla id justo consequat, eleifend augue vitae, mollis tellus. Suspendisse potenti. Sed mattis bibendum urna, ut varius tortor pharetra sit amet. Cras bibendum vestibulum orci vel tempor. Praesent et tortor felis. Cras non suscipit turpis, et suscipit est. Curabitur ut tortor sed odio cursus porttitor vel non ligula. Nullam dignissim fermentum consectetur. Vivamus sed aliquet nisi. Nulla eu dictum leo, in euismod est.
+          Mauris euismod odio neque, eu pellentesque ligula ullamcorper vel. Fusce et sem urna. Aliquam sit amet ligula consectetur ante ornare venenatis semper nec urna. Sed fermentum, est vel congue congue, nunc mauris finibus augue, quis tristique massa orci at libero. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean et massa dui. Vivamus et sapien lectus. Sed sagittis finibus neque, et rutrum mi egestas quis. Aliquam sit amet arcu quam. Nam sit amet est condimentum, blandit sapien at, aliquet tortor. Phasellus dictum turpis quis mi mollis scelerisque. Phasellus accumsan mi risus, eu fermentum nunc iaculis eget. Maecenas maximus neque eu tempor sodales.
+          Mauris tincidunt pharetra nunc, in porttitor arcu commodo ac. Nunc iaculis pulvinar aliquet. Aenean rutrum eu sem ac pellentesque. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus metus eros, pulvinar ut luctus a, luctus eget enim. Praesent ullamcorper elit facilisis leo vehicula eleifend. Nullam sed lacinia lacus. Praesent mollis ullamcorper tortor, non pulvinar nulla lobortis nec. Cras sit amet risus eu dolor accumsan placerat blandit eget quam. Donec quis fringilla risus, sit amet commodo leo. Phasellus placerat metus eu vulputate faucibus. Aliquam blandit laoreet eros efficitur fringilla.
+          Fusce nec velit non felis consequat malesuada dignissim non diam. Nulla consectetur vulputate dui quis mollis. Aliquam vulputate tortor quis libero gravida, id elementum lectus fringilla. Sed vel tempus metus. Curabitur placerat nisl ut rhoncus lacinia. Quisque consequat justo diam, et fermentum tortor pretium vitae. Integer tellus elit, mollis sed turpis ut, sodales pellentesque quam.
+        </p>
+      </div>
+      <div class="right col-md-4 col-xs-12">
+        <!-- <h3>Recent posts</h3>
+        <ul>
+          <li>one
+          <li>two
+          <li>three
+        </ul> -->
+      </div>
+    </div>
   </div>
 </body>
 </html>

@@ -5,7 +5,22 @@
             [io.pedestal.http.route.definition :refer [defroutes]]
             [ring.util.response :as ring-resp]
             [markdown.core :as md]
-            [clojure.java.io :as io]))
+            [clojure.java.io :as io]
+            [net.cgrand.enlive-html :as html]))
+
+(html/deftemplate template "public/template.html"
+  [post]
+  [:title] (html/content (:title post))
+  [:div.content] (fn [_] (:body post)))
+
+;; Some sample data
+(def home-page-content {
+  :title "Deploying a pedestal application to Bluemix"
+  :body (markdown.core/md-to-html-string (slurp (io/file (io/resource "deploying-to-bluemix.md"))))})
+
+
+
+
 
 (defn about-page
   [request]
@@ -15,7 +30,7 @@
 
 (defn home-page
   [request]
-  (ring-resp/response (markdown.core/md-to-html-string (slurp (io/file (io/resource "deploying-to-bluemix.md"))))))
+  (ring-resp/response (reduce str (template home-page-content))))
 
 (defroutes routes
   ;; Defines "/" and "/about" routes with their associated :get handlers.
