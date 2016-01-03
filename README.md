@@ -16,4 +16,16 @@ To configure logging see config/logback.xml. By default, the app logs to stdout 
 To learn more about configuring Logback, read its [documentation](http://logback.qos.ch/documentation.html).
 
 
+## REPL
 
+To start the server from the repl:
+
+```
+(def dev-serv (run-dev))
+```
+
+To reload (parts of) the server after code changes:
+
+```
+(require 'blog.service :reload)
+```

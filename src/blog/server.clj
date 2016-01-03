@@ -1,7 +1,9 @@
 (ns blog.server
   (:gen-class) ; for -main method in uberjar
   (:require [io.pedestal.http :as server]
-            [blog.service :as service]))
+            [blog.service :as service]
+            [net.cgrand.reload :as enlive-reload]
+            [io.pedestal.service-tools.dev :as pedestal-dev]))
 
 ;; This is an adapted service map, that can be started and stopped
 ;; From the REPL you can call server/start and server/stop on this service
@@ -30,6 +32,9 @@
   "The entry-point for 'lein run'"
   [& args]
   (println "\nCreating your server...")
+  (enlive-reload/auto-reload *ns*)
+  (enlive-reload/auto-reload (find-ns 'blog.service))
+  (pedestal-dev/watch ["src" "resources"])
   (server/start runnable-service))
 
 ;; If you package the service up as a WAR,

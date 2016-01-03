@@ -11,22 +11,12 @@
 (html/deftemplate template "public/template.html"
   [post]
   [:title] (html/content (:title post))
-  [:div.content] (fn [_] (:body post)))
+  [:div.content] (html/html-content (:body post)))
 
 ;; Some sample data
 (def home-page-content {
-  :title "Deploying a pedestal application to Bluemix"
+  :title "Deploying a Pedestal application to Bluemix"
   :body (markdown.core/md-to-html-string (slurp (io/file (io/resource "deploying-to-bluemix.md"))))})
-
-
-
-
-
-(defn about-page
-  [request]
-  (ring-resp/response (format "Clojure %s - served from %s"
-                              (clojure-version)
-                              (route/url-for ::about-page))))
 
 (defn home-page
   [request]
@@ -37,8 +27,7 @@
   ;; The interceptors defined after the verb map (e.g., {:get home-page}
   ;; apply to / and its children (/about).
   [[["/" {:get home-page}
-     ^:interceptors [(body-params/body-params) bootstrap/html-body]
-     ["/about" {:get about-page}]]]])
+     ^:interceptors [(body-params/body-params) bootstrap/html-body]]]])
 
 ;; Consumed by blog.server/create-server
 ;; See bootstrap/default-interceptors for additional options you can configure

@@ -4,9 +4,10 @@
   <title>Kim's Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-  <!-- Optional theme: --> <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
   <link rel="stylesheet" type="text/css" href="/main.css">
+  <link rel="stylesheet" href="/highlightjs/styles/default.css">
 </head>
 <body>
   <div class="container">
@@ -25,6 +26,7 @@
           Fusce nec velit non felis consequat malesuada dignissim non diam. Nulla consectetur vulputate dui quis mollis. Aliquam vulputate tortor quis libero gravida, id elementum lectus fringilla. Sed vel tempus metus. Curabitur placerat nisl ut rhoncus lacinia. Quisque consequat justo diam, et fermentum tortor pretium vitae. Integer tellus elit, mollis sed turpis ut, sodales pellentesque quam.
         </p>
       </div>
+    
       <div class="right col-md-4 col-xs-12">
         <!-- <h3>Recent posts</h3>
         <ul>
@@ -34,6 +36,30 @@
         </ul> -->
       </div>
     </div>
+    
+    
+    
+    <div class="col-md-8 col-xs-12" id="disqus_thread"></div>
+    
+    
+    
+    
   </div>
+  
+  <script src="/highlightjs/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <script>
+    var disqus_config = function () {
+      this.page.url = "https://kim-stebel.mybluemix.net/deploying-pedestal-applications-on-bluemix"; 
+      this.page.identifier = "deploying-pedestal-applications-on-bluemix";
+    };
+    (function() {
+      var d = document, s = d.createElement('script');
+      s.src = '//kim-stebel.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+    
 </body>
 </html>
