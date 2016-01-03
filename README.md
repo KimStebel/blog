@@ -27,5 +27,5 @@ To start the server from the repl:
 To reload (parts of) the server after code changes:
 
 ```
-(require 'blog.service :reload)
+(require 'blog.service :reload-all)
 ```
