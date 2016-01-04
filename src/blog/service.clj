@@ -6,28 +6,47 @@
             [ring.util.response :as ring-resp]
             [markdown.core :as md]
             [clojure.java.io :as io]
-            [net.cgrand.enlive-html :as html]))
+            [net.cgrand.enlive-html :as html]
+            [blog.posts :as posts]))
+
+(defn disqus [post] (str "
+    var disqus_config = function () {
+      //this.page.url = 'https://kim-stebel.mybluemix.net/deploying-pedestal-applications-on-bluemix'; 
+      this.page.identifier = '" (:id post) "';
+    };
+    (function() {
+      var d = document, s = d.createElement('script');
+      s.src = '//kim-stebel.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();"))
 
 (html/deftemplate template "public/template.html"
   [post]
   [:title] (html/content (:title post))
-  [:div.content] (html/html-content (:body post)))
-
+  [:div.content] (html/html-content (:body post))
+  [:script.disqus] (html/html-content (disqus post)))
+  
 ;; Some sample data
-(def home-page-content {
-  :title "Deploying a Pedestal application to Bluemix"
-  :body (markdown.core/md-to-html-string (slurp (io/file (io/resource "deploying-to-bluemix.md"))))})
+(def home-page-content (first posts/posts))
+
+(defn post-content [req]
+  (let [id (get-in req [:path-params :id])]
+    (first (filter (fn [post] (= id (:id post))) posts/posts))))
 
 (defn home-page
   [request]
   (ring-resp/response (reduce str (template home-page-content))))
 
+(defn post-handler [id]
+  (ring-resp/response (reduce str (template (post-content id)))))
+
 (defroutes routes
   ;; Defines "/" and "/about" routes with their associated :get handlers.
   ;; The interceptors defined after the verb map (e.g., {:get home-page}
   ;; apply to / and its children (/about).
-  [[["/" {:get home-page}
-     ^:interceptors [(body-params/body-params) bootstrap/html-body]]]])
+  [[["/" {:get home-page} ^:interceptors [(body-params/body-params) bootstrap/html-body]]
+    ["/post/:id" {:get post-handler} ^:interceptors [(body-params/body-params) bootstrap/html-body]]]])
 
 ;; Consumed by blog.server/create-server
 ;; See bootstrap/default-interceptors for additional options you can configure
