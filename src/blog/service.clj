@@ -21,10 +21,14 @@
       (d.head || d.body).appendChild(s);
     })();"))
 
+(defn posts-list [] 
+  (apply str (map (fn [post] (str "<li><a href=\"/posts/" (:id post) "\">" (:title post) "</a></li>")) posts/posts)))
+
 (html/deftemplate template "public/template.html"
   [post]
   [:title] (html/content (:title post))
   [:div.content] (html/html-content (:body post))
+  [:ul.recent] (html/html-content (posts-list))
   [:script.disqus] (html/html-content (disqus post)))
   
 ;; Some sample data
@@ -46,7 +50,7 @@
   ;; The interceptors defined after the verb map (e.g., {:get home-page}
   ;; apply to / and its children (/about).
   [[["/" {:get home-page} ^:interceptors [(body-params/body-params) bootstrap/html-body]]
-    ["/post/:id" {:get post-handler} ^:interceptors [(body-params/body-params) bootstrap/html-body]]]])
+    ["/posts/:id" {:get post-handler} ^:interceptors [(body-params/body-params) bootstrap/html-body]]]])
 
 ;; Consumed by blog.server/create-server
 ;; See bootstrap/default-interceptors for additional options you can configure
