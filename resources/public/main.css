@@ -9,12 +9,20 @@ header {
   border-radius: 0 0 20px 20px;
 }
 header h1 {
-  font-size: 300%;
-  margin-right: 20px;
+  font-size: 230%;
+  margin-right: 0px;
 }
 .main {
   margin-top: 40px;
 }
+
+.main h1 { font-size: 200% }
+.main h2 { font-size: 170% }
+.main h3 { font-size: 140% }
+.main h4 { font-size: 110% }
+.main h5 { font-size: 100% }
+.main h6 { font-size: 100% }
+
 
 @media (min-width: 992px ) {
   header {
