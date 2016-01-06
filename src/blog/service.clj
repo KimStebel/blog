@@ -7,7 +7,9 @@
             [markdown.core :as md]
             [clojure.java.io :as io]
             [net.cgrand.enlive-html :as html]
-            [blog.posts :as posts]))
+            [blog.posts :as posts]
+            [clj-rss.core :as rss]
+            [blog.feed :as feed]))
 
 (defn disqus [post] (str "
     var disqus_config = function () {
@@ -53,7 +55,8 @@
   ;; The interceptors defined after the verb map (e.g., {:get home-page}
   ;; apply to / and its children (/about).
   [[["/" {:get home-page} ^:interceptors [(body-params/body-params) bootstrap/html-body]]
-    ["/posts/:id" {:get post-handler} ^:interceptors [(body-params/body-params) bootstrap/html-body]]]])
+    ["/posts/:id" {:get post-handler} ^:interceptors [(body-params/body-params) bootstrap/html-body]]
+    ["/feed" {:get feed/feed-handler}]]])
 
 ;; Consumed by blog.server/create-server
 ;; See bootstrap/default-interceptors for additional options you can configure
