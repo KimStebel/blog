@@ -3,8 +3,13 @@
             [clojure.java.io :as io]
             [net.cgrand.enlive-html :as html]))
 
+(defn post-html [post]
+  (str "<h1>" (:title post) "</h1><span class=\"date\">" (:date post) "</span>"
+       (-> (:filename post) io/resource io/file slurp md/md-to-html-string)))
+
 (def posts
   [{
     :title "Deploying a Pedestal application to Bluemix"
     :id "deploying-a-pedestal-application-to-bluemix"
-    :body (-> "deploying-to-bluemix.md" io/resource io/file slurp md/md-to-html-string)}])
+    :date "2015-12-20"
+    :filename "deploying-to-bluemix.md"}])

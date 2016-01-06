@@ -38,12 +38,15 @@
   (let [id (get-in req [:path-params :id])]
     (first (filter (fn [post] (= id (:id post))) posts/posts))))
 
-(defn home-page
-  [request]
-  (ring-resp/response (reduce str (template home-page-content))))
+(defn post-html [post]
+  (apply str
+    (template post)))
 
-(defn post-handler [id]
-  (ring-resp/response (reduce str (template (post-content id)))))
+(defn home-page [req]
+  (ring-resp/response (post-html home-page-content)))
+
+(defn post-handler [req]
+  (ring-resp/response (post-html (post-content req))))
 
 (defroutes routes
   ;; Defines "/" and "/about" routes with their associated :get handlers.
