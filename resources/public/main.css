@@ -23,6 +23,12 @@ header h1 {
 .main h5 { font-size: 100% }
 .main h6 { font-size: 100% }
 
+img.me {
+  float: right;
+  width: 50%;
+  height: auto;
+  border-radius: 20px;
+}
 
 @media (min-width: 992px ) {
   header {
