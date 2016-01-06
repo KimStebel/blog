@@ -12,8 +12,18 @@ header h1 {
   font-size: 230%;
   margin-right: 0px;
 }
+header h1 a, header h1 a:hover {
+  color: #f8f8f8;
+  text-decoration: none; 
+}
+
 .main {
   margin-top: 40px;
+}
+.date {
+  display: block;
+  font-size: 80%;
+  margin-bottom: 20px;
 }
 
 .main h1 { font-size: 200% }

@@ -4,7 +4,7 @@ Recently I've been dabbling in Clojure a bit and decided to use it to write my o
 
 If you haven't already, create a Pedestal application with Leiningen:
 
-```
+```nohighlight
 lein new pedestal-service the-next-big-server-side-thing
 ```
 
@@ -30,7 +30,7 @@ with
 
 Add a `manifest.yml` file to your project directory:
 
-```
+```nohighlight
 ---
 applications:
 - name: application-name
@@ -48,7 +48,7 @@ This tells Bluemix to use a custom buildpack for Clojure and the `cflinuxfs2` st
 
 Login and push...
 
-```
+```nohighlight
 cf login
 cf push
 ```

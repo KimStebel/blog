@@ -27,7 +27,7 @@
 (html/deftemplate template "public/template.html"
   [post]
   [:title] (html/content (:title post))
-  [:div.content] (html/html-content (:body post))
+  [:div.content] (html/html-content (posts/content-html post))
   [:ul.recent] (html/html-content (posts-list))
   [:script.disqus] (html/html-content (disqus post)))
   
@@ -38,15 +38,15 @@
   (let [id (get-in req [:path-params :id])]
     (first (filter (fn [post] (= id (:id post))) posts/posts))))
 
-(defn post-html [post]
+(defn post-template [post]
   (apply str
     (template post)))
 
 (defn home-page [req]
-  (ring-resp/response (post-html home-page-content)))
+  (ring-resp/response (post-template home-page-content)))
 
 (defn post-handler [req]
-  (ring-resp/response (post-html (post-content req))))
+  (ring-resp/response (post-template (post-content req))))
 
 (defroutes routes
   ;; Defines "/" and "/about" routes with their associated :get handlers.
@@ -82,4 +82,3 @@
               ::bootstrap/port (Integer. 
                                  (let [port (System/getenv "VCAP_APP_PORT")]
                                    (or port "8080") ))});
-
