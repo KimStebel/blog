@@ -2,7 +2,7 @@
 applications:
 - name: taas
   memory: 512M
-  host: taas
+  host: kim-stebel
   stack: cflinuxfs2
   instances: 1
   path: .
