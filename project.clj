@@ -5,7 +5,7 @@
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure "1.7.0"]
                  [io.pedestal/pedestal.service "0.4.1"]
-
+                 [io.pedestal/pedestal.service-tools "0.4.1"]
                  ;; Remove this line and uncomment one of the next lines to
                  ;; use Immutant or Tomcat instead of Jetty:
                  [io.pedestal/pedestal.jetty "0.4.1"]
