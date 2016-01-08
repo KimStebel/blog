@@ -1,4 +1,4 @@
-Recently I've been dabbling in Clojure a bit and decided to use it to write my own blog (the one you're reading now!). I deployed it to Bluemix, and since neither Bluemix nor Pedestal have any useful documentation on how to deploy a Clojure/Pedestal app to Bluemix, I thought I'd write it up. Let's start!
+Recently I've been dabbling in Clojure a bit and decided to use it to write my own blog (the one you're reading now!). I deployed it to [Bluemix](https://console.ng.bluemix.net/), and since neither Bluemix nor Pedestal have any useful documentation on how to deploy a Clojure/[Pedestal](https://github.com/pedestal/pedestal) app to Bluemix, I thought I'd write it up.
 
 ## Create the pedestal app
 
