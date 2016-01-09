@@ -6,3 +6,4 @@ logs/
 .nrepl-port
 .project
 bin/
+resources/public/*.min.css

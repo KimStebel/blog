@@ -19,6 +19,11 @@
                  [markdown-clj "0.9.85"]
                  [enlive "1.1.6"]
                  [clj-rss "0.2.3"]]
+  :plugins [[lein-asset-minifier "0.2.4"]]
+  :hooks [minify-assets.plugin/hooks]
+  :minify-assets
+    {:assets
+      {"resources/public/main.min.css" ["resources/public/main.css" "resources/public/highlightjs/styles/default.css"]}}
   :min-lein-version "2.0.0"
   :resource-paths ["config", "resources"]
   :profiles {:dev {:aliases {"run-dev" ["trampoline" "run" "-m" "blog.server/run-dev"]}
