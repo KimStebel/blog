@@ -9,7 +9,9 @@
             [net.cgrand.enlive-html :as html]
             [blog.posts :as posts]
             [clj-rss.core :as rss]
-            [blog.feed :as feed]))
+            [blog.feed :as feed]
+            [io.pedestal.http.jetty.util :as jetty-util])
+   (:import (org.eclipse.jetty.server.handler.gzip GzipHandler)))
 
 (defn disqus [post] (str "
     var disqus_config = function () {
@@ -82,6 +84,15 @@
               
               ;; Either :jetty, :immutant or :tomcat (see comments in project.clj)
               ::bootstrap/type :jetty
+              
+              ;; Add our filter-fn a the context configurator
+              ::bootstrap/container-options
+                {:context-configurator (fn [c]
+                                         (let [gzip-handler (GzipHandler.)]
+                                           (.setGzipHandler c gzip-handler)
+                                           c))}
+              
+              
               ;;::bootstrap/host "localhost"
               ::bootstrap/port (Integer. 
                                  (let [port (System/getenv "VCAP_APP_PORT")]
