@@ -17,4 +17,5 @@
     :title "Deploying a Pedestal application to Bluemix"
     :id "deploying-a-pedestal-application-to-bluemix"
     :date "2015-12-20"
+    :tags "pedestal clojure bluemix cf cloud foundry"
     :filename "deploying-to-bluemix.md"}])

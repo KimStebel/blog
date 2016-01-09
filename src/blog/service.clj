@@ -31,7 +31,8 @@
   [:title] (html/content (:title post))
   [:div.content] (html/html-content (posts/content-html post))
   [:ul.recent] (html/html-content (posts-list))
-  [:script.disqus] (html/html-content (disqus post)))
+  [:script.disqus] (html/html-content (disqus post))
+  [(html/attr= :name "description")] (html/set-attr :content (str "Kim Stebel " (:tags post))))
   
 ;; Some sample data
 (def home-page-content (first posts/posts))
