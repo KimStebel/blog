@@ -17,5 +17,5 @@
     :title "Deploying a Pedestal application to Bluemix"
     :id "deploying-a-pedestal-application-to-bluemix"
     :date "2015-12-20"
-    :tags "pedestal clojure bluemix cf cloud foundry"
+    :description "Recently I've been dabbling in Clojure a bit and decided to use it to write my own blogging engine (which is running this blog now). I deployed it to Bluemix, IBM's cloud foundry PaaS, and since I couldn't find any useful documentation on how to deploy a Clojure/Pedestal app to Bluemix or cloud foundry, I thought I'd write it up."
     :filename "deploying-to-bluemix.md"}])
