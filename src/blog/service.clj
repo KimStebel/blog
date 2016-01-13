@@ -34,6 +34,21 @@
   [:div.content] (html/html-content (posts/content-html post))
   [:ul.recent] (html/html-content (posts-list))
   [:script.disqus] (html/html-content (disqus post))
+  [:div.thebe] (html/html-content (if (:thebe post) "<script src=\"//code.jquery.com/jquery-2.1.4.min.js\" type=\"text/javascript\" charset=\"utf-8\"></script>
+ <script src=\"//storage.googleapis.com/kimstebel-public/thebe/static/main-built.js\" type=\"text/javascript\" charset=\"utf-8\"></script>
+  <script>
+    $(function(){
+      new Thebe({
+        url: 'http://185.73.38.147:8000',
+				selector: 'code.javascript',
+        tmpnb_mode: true,
+        kernel_name: 'javascript',
+				debug: true,
+				image_name: 'kimstebel/thebe-demo-notebook'
+      });
+    });
+  </script>" "<script src=\"//storage.googleapis.com/kimstebel-public/highlightjs/highlight.pack.js\"></script>
+    <script>hljs.initHighlightingOnLoad();</script>"))
   [(html/attr= :name "description")] (html/set-attr :content (str (:description post))))
   
 ;; Some sample data

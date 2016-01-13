@@ -1,8 +1,25 @@
 #!/bin/bash
 
 lein compile
+
+#add thebe
+git clone https://github.com/kimstebel/thebe.git thebe
+cd thebe
+git checkout master
+git pull
+coffee -cbm .
+bower --allow-root --no-interactive install
+cd static
+r.js -o build.js baseUrl=. name=almond include=main out=main-built.js 
+cd ../..
+mv thebe resources/public/
+
+# upload to google storage
 gsutil -m rm -r 'gs://kimstebel-public/'
 gsutil mb 'gs://kimstebel-public/'
 gsutil -m -h "Cache-Control:public, max-age=86400" cp -z html,css,js -r resources/public/* 'gs://kimstebel-public/'
 gsutil -m acl set -r 'public-read' 'gs://kimstebel-public/'
+rm -rf resources/public/thebe
+
+# deploy to cf
 cf push
