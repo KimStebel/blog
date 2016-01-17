@@ -20,6 +20,3 @@ gsutil mb 'gs://kimstebel-public/'
 gsutil -m -h "Cache-Control:public, max-age=86400" cp -z html,css,js -r resources/public/* 'gs://kimstebel-public/'
 gsutil -m acl set -r 'public-read' 'gs://kimstebel-public/'
 rm -rf resources/public/thebe
-
-# deploy to cf
-cf push
