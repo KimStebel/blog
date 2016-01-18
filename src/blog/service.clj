@@ -39,7 +39,7 @@
   <script>
     $(function(){
       new Thebe({
-        url: 'http://185.73.38.147:8000',
+        url: 'https://tmpnb.kimstebel.com:8000',
 				selector: 'code.javascript',
         tmpnb_mode: true,
         kernel_name: 'javascript',
