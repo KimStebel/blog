@@ -49,4 +49,7 @@ img.me {
     bottom: 0;
     right: 0;
   }
+  img.me {
+    width: 25%;
+  }
 }
