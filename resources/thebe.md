@@ -1,12 +1,10 @@
-The year is 2016. The web is entirely occupied by interactive content. Everywhere, users can create, edit, comment, share, interact. Everywhere? Well, not entirely... One small village still holds out against the invasion. With few exceptions, technical documentation, reference material, and tutorials still work like good old books. Often, the only interactive element is a search box.
+The year is 2016. The web is entirely occupied by interactive content. Everywhere, users can create, edit, comment, and share. Everywhere? Well, not entirely... One small village still holds out against the invasion. With few exceptions, technical documentation, reference material, and tutorials still work like good old books.
 
-It's not that documentation couldn't benefit from being more like an application than a book. Let's say you're writing about your favourite web framework that will finally make everything simple and elegant, you're documenting the library you're developing or your web service. Wouldn't it be great if your readers could try out all the good stuff you're writing about immediately? If they could run your example code and - more importantly - tinker and experiment with it without even having to leave your web<strike>site</strike>app?
+It's not that documentation couldn't benefit from being more like an application than like a book. Let's say you're writing about your favourite web framework that will finally make everything simple and elegant, you're documenting the library you're developing or your web service. Wouldn't it be great if your readers could try out all the good stuff you're writing about immediately? If they could run your example code and - more importantly - tinker and experiment with it without even having to leave your web<strike>site</strike>app?
 
-In this post I'll talk about how to use Jupyter notebooks and Thebe, a new frontend for Jupyter, to make technical documentation more interactive. First, you need some kind of execution backend that runs the code for you. It should execute the code in a controlled, isolated environment, yet it should be flexible and extensible enough to run whatever you fancy. Jupyter notebooks do just that. Jupyter runs in [Docker](https://www.docker.com/) containers and even has a multiuser solution called [tmpnb](https://github.com/jupyter/tmpnb), which spins up a new container for each user. Jupyter's frontend however is rather clunky and can't be embedded into other pages very well. This is where [Thebe](https://github.com/oreillymedia/thebe/tree/master/static) comes in.
+Recently I've been looking into [Jupyter notebooks](http://jupyter.org) and [Thebe](https://github.com/oreillymedia/thebe/tree/master/static), to find ways to make technical documentation more interactive. Jupyter notebook is a web application that allows you to create documents with embedded, runnable code. Its backend executes the code in a controlled, isolated environment, yet it is extensible enough to run whatever you fancy. Jupyter can run in [Docker](https://www.docker.com/) containers and even has a multiuser solution called [tmpnb](https://github.com/jupyter/tmpnb), which spins up a new container for each user. Jupyter's frontend, however, is a bit clunky and can't be embedded into other pages very well. This is where Thebe comes in.
 
-Thebe is an alternative frontend for Jupyter notebooks that you can easily embed into your website. All it needs is the URL of a Jupyter backend to execute code on and some code to execute.
-
-Once you have it set up, you'll get something like this:
+Thebe is an alternative frontend for Jupyter notebooks that you can easily embed into your website. All it needs is the URL of a Jupyter server and some code to execute. Once you have it set up, you'll get something like this:
 
 ```javascript
 var Cloudant = require("cloudant");
@@ -23,13 +21,13 @@ While all the pieces of this solution are available as open source, putting them
 
 While there are images available from the Jupyter project, you will probably want to extend them to add other programming languages or libraries. You can use [jupyter/notebook](jupyter/notebook) directly to get started and then add to it by creating your own `Dockerfile` with `FROM jupyter/notebook`. For example, I'm using [this Dockerfile](https://github.com/KimStebel/thebe-demo/blob/master/notebook/Dockerfile).
 
-User `docker run` to start the notebook server:
+Use `docker run` to start the notebook server:
 
 ```shell
 docker run \
   --net=host # share networking with the host
-  jupyter/notebook \
-  jupyter notebook \
+  jupyter/notebook \ # name of your image
+  jupyter notebook \ # command to execute the notebook server
     --no-browser \ # don't open a browser, since we're in a docker container
     --NotebookApp.base_url=/ \ # base URL can be / as nothing else is served from this server
     --ip=0.0.0.0 \ # allow access from any network interface
@@ -37,20 +35,18 @@ docker run \
     --NotebookApp.allow_origin='*' #and enable CORS for any origin, you might want to change this later ;)
 ```
 
-
-
 ## Thebe
 
-To install Thebe, currently the best option seems to be compiling it from source. You'll need a few tools...
+To get Thebe, currently the best option seems to be compiling it from source. (There is a CDN link in the readme too, but that doesn't seem to work at the moment.) You'll need a few tools...
 
 ```shell
-sudo apt-get install docker.io nodejs-legacy npm #or whatever your OS of choice uses to install those
+sudo apt-get install docker.io nodejs-legacy npm # or whatever your OS of choice uses to install those
 sudo npm install -g bower
 sudo npm install -g requirejs
 sudo npm install -g coffee-script
 ```
 
-And then you can compile it as documented in the [readme](https://github.com/oreillymedia/thebe/blob/master/README.md).
+Now you can compile it as documented in the [readme](https://github.com/oreillymedia/thebe/blob/master/README.md).
 
 ```shell
 bower install
@@ -59,9 +55,7 @@ cd static
 r.js -o build.js baseUrl=. name=almond include=main out=main-built.js
 ```
 
-There is a CDN link in the readme too, but that doesn't seem to work at the moment.
-
-Then you embed Thebe into your website. You will also need JQuery.
+Then you embed the generated main-built.js into your website. You will also need JQuery.
 
 ```html
 <script src="//code.jquery.com/jquery-2.1.4.min.js" type="text/javascript" charset=\"utf-8"></script>
@@ -85,10 +79,5 @@ To start Thebe, you pass it a configuration object. `url` is the URL of your Jup
 </script>
 ```
 
-With this configuration, Thebe will use the notebook server running locally. While that's fine for development and testing, to run Thebe on a website with more than one user, we'll need to use tmpnb to give every user their own notebook instance. I'll talk more about tmpnb, deployment options and what kind of load it can handle in my next blog post.
-
-
-
-
-
+With this configuration, Thebe will use the notebook server running locally. While that's fine for development and testing, to run Thebe on a website with more than one user, we'll need to use tmpnb to give every user their own notebook instance. I'll talk more about tmpnb, deployment options, and what kind of load it can handle in my next blog post.
 
