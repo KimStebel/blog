@@ -13,7 +13,13 @@
        (-> (:filename post) io/resource io/file slurp md/md-to-html-string)))
 
 (def posts
-  [{:title "Using Jupyter notebook and Thebe for interactive documentation"
+  [{:title "How not to write for developers"
+    :id "how-not-to-write-for-developers"
+    :date "2016-02-10"
+    :description ""
+    :filename "how-not-to-write-for-developers.md"
+    :thebe false}
+   {:title "Using Jupyter notebook and Thebe for interactive documentation"
     :id "thebe"
     :date "2016-01-29"
     :description "The year is 2016. The web is entirely occupied by interactive content. Everywhere, users can create, edit, comment, and share. Everywhere? Well, not entirely... One small village still holds out against the invasion. With few exceptions, technical documentation, reference material, and tutorials still work like good old books."
